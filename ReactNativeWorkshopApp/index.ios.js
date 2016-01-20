@@ -1,6 +1,6 @@
 /**
- * Sample React Native App
- * https://github.com/facebook/react-native
+ * React Native Workshop App
+ * https://github.com/struct-technology/react-native-workshop
  */
 'use strict';
 import React, {
