@@ -11,32 +11,34 @@ import React, {
   View
 } from 'react-native';
 
-import {branch} from 'baobab-react/higher-order';
-import * as actions from './app/actions/colors-action';
+import MapView from './app/components/MapView';
+
+//import {branch} from 'baobab-react/mixins';
+//import * as actions from './app/actions/colors-action';
 
 class ReactNativeWorkshopApp extends Component {
   
-  constructor(props, context) {
-    super(props, context);
+  // constructor(props, context) {
+  //   super(props, context);
 
-    // Initial state
-    this.state = {inputColor: null};
-  }
+  //   // Initial state
+  //   this.state = {inputColor: null};
+  // }
 
-  // Controlling the input's value
-  updateInput(e) {
-    this.setState({inputColor: e.target.value})
-  }
+  // // Controlling the input's value
+  // updateInput(e) {
+  //   this.setState({inputColor: e.target.value})
+  // }
 
-  // Adding a color on click
-  handleClick() {
+  // // Adding a color on click
+  // handleClick() {
 
-    // Actions bound to the tree are available through `props.actions`
-    this.props.actions.add(this.state.inputColor);
+  //   // Actions bound to the tree are available through `props.actions`
+  //   this.props.actions.add(this.state.inputColor);
 
-    // Resetting the input
-    this.setState({inputColor: null});
-  }
+  //   // Resetting the input
+  //   this.setState({inputColor: null});
+  // }
   
   render() {
     return (
@@ -51,20 +53,21 @@ class ReactNativeWorkshopApp extends Component {
           Press Cmd+R to reload,{'\n'}
           Cmd+D or shake for dev menu
         </Text>
+        <MapView style={{width: 300, height:300}} /> 
       </View>
     );
   }
 }
 
 // Subscribing to the relevant data and binding actions to the component
-export default branch(ReactNativeWorkshopApp, {
-  cursors: {
-    colors: ['colors']
-  },
-  actions: {
-    add: actions.addColor
-  }
-});
+// export default branch(ReactNativeWorkshopApp, {
+//   cursors: {
+//     colors: ['colors']
+//   },
+//   actions: {
+//     add: actions.addColor
+//   }
+// });
 
 const styles = StyleSheet.create({
   container: {
