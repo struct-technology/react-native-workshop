@@ -11,34 +11,13 @@ import React, {
   View
 } from 'react-native';
 
-import MapView from './app/components/MapView';
+import {root} from 'baobab-react/higher-order';
+import tree from './app/stores/tree.js';
 
-//import {branch} from 'baobab-react/mixins';
+import MapView from './app/components/MapView';
 //import * as actions from './app/actions/colors-action';
 
 class ReactNativeWorkshopApp extends Component {
-  
-  // constructor(props, context) {
-  //   super(props, context);
-
-  //   // Initial state
-  //   this.state = {inputColor: null};
-  // }
-
-  // // Controlling the input's value
-  // updateInput(e) {
-  //   this.setState({inputColor: e.target.value})
-  // }
-
-  // // Adding a color on click
-  // handleClick() {
-
-  //   // Actions bound to the tree are available through `props.actions`
-  //   this.props.actions.add(this.state.inputColor);
-
-  //   // Resetting the input
-  //   this.setState({inputColor: null});
-  // }
   
   render() {
     return (
@@ -59,15 +38,8 @@ class ReactNativeWorkshopApp extends Component {
   }
 }
 
-// Subscribing to the relevant data and binding actions to the component
-// export default branch(ReactNativeWorkshopApp, {
-//   cursors: {
-//     colors: ['colors']
-//   },
-//   actions: {
-//     add: actions.addColor
-//   }
-// });
+// Let's bind the component to the tree through the `root` higher-order component
+const RootedApp = root(ReactNativeWorkshopApp, tree);
 
 const styles = StyleSheet.create({
   container: {
@@ -88,4 +60,4 @@ const styles = StyleSheet.create({
   },
 });
 
-AppRegistry.registerComponent('ReactNativeWorkshopApp', () => ReactNativeWorkshopApp);
+AppRegistry.registerComponent('ReactNativeWorkshopApp', () => RootedApp);
