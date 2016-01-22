@@ -1,3 +1,5 @@
+/* @flow weak */
+
 /**
  * React Native Workshop App
  * https://github.com/struct-technology/react-native-workshop

@@ -8,5 +8,5 @@
 
 #import "RCTViewManager.h"
 
-@interface RCTMyMapManager : RCTViewManager
+@interface RCTMyMapManager : RCTViewManager<MKMapViewDelegate>
 @end
