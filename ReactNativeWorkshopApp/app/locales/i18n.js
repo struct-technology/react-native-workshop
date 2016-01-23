@@ -7,6 +7,6 @@ import locale from './pt-br';
 
 var polyglot = new Polyglot({locale: "pt-br", phrases: locale});
 
-export {
+export default {
   t: (args)=>polyglot.t(args)
 };

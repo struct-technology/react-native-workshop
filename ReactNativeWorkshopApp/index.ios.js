@@ -8,15 +8,17 @@
 import React, {
   AppRegistry,
   Component,
-  View
+  View,
+  Text,
+  Navigator
 } from 'react-native';
 
 import {root} from 'baobab-react/higher-order';
 import tree from './app/stores/tree.js';
 
-import Home from './app/views/home.js';
-import Login from './app/views/login.js';
-import Signup from './app/views/signup.js';
+//import Home from './app/views/home.js';
+import LoginView from './app/views/login-views.js';
+//import Signup from './app/views/signup.js';
 
 
 class ReactNativeWorkshopApp extends Component {
@@ -24,27 +26,24 @@ class ReactNativeWorkshopApp extends Component {
   renderScene(route, nav) {
     switch (route.id) {
       case 'home':
-        return <Home />;
+        return <LoginView />;
       case 'login':
-        return <Login />;
+        return <LoginView />;
       case 'signup':
-        return <Signup />;
+        return <LoginView />;
       default:
-        if (this.state.userCursor.get('id') === null) {
-          return <Home loading={this.state.userCursor.get('id') === null} />;
-        } else {
-          return <Login />;
-        }
+        return <LoginView />;
     }
   } 
   
   render() {
 
     return (
-      <View>
+      <View style={{flex: 1}}>
         <Navigator
           initialRoute={{name: 'My First Scene', index: 0}}
           renderScene={this.renderScene}
+          sceneStyle={{backgroundColor: 'transparent', width: 300, height: 300}}
           configureScene={(route) => {
             if (route.sceneConfig) {
               route.sceneConfig.gestures = {};
@@ -59,6 +58,7 @@ class ReactNativeWorkshopApp extends Component {
         />
       </View>
     );
+
   }
 }
 

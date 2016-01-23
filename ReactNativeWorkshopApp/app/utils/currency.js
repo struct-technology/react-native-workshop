@@ -1,7 +1,7 @@
 /* @flow weak */
 
 'use strict';
-export function (num) {
+export default function (num) {
     return "R$ " + num
           .toFixed(2) // always two decimal digits
           .replace(".", ",") // replace decimal point character with ,
