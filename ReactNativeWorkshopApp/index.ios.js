@@ -7,61 +7,21 @@
 'use strict';
 import React, {
   AppRegistry,
-  Component,
-  View,
-  Text,
-  Navigator
+  StatusBarIOS
 } from 'react-native';
 
-import {root} from 'baobab-react/higher-order';
-import tree from './app/stores/tree.js';
+import { Navigation } from './src/nav';
 
-//import Home from './app/views/home.js';
-import LoginView from './app/views/login-views.js';
-//import Signup from './app/views/signup.js';
+class ReactNativeWorkshopApp extends React.Component {
 
-
-class ReactNativeWorkshopApp extends Component {
-
-  renderScene(route, nav) {
-    switch (route.id) {
-      case 'home':
-        return <LoginView />;
-      case 'login':
-        return <LoginView />;
-      case 'signup':
-        return <LoginView />;
-      default:
-        return <LoginView />;
-    }
-  } 
-  
-  render() {
-
-    return (
-      <View style={{flex: 1}}>
-        <Navigator
-          initialRoute={{name: 'My First Scene', index: 0}}
-          renderScene={this.renderScene}
-          sceneStyle={{backgroundColor: 'transparent', width: 300, height: 300}}
-          configureScene={(route) => {
-            if (route.sceneConfig) {
-              route.sceneConfig.gestures = {};
-              return route.sceneConfig;
-            }
-            route.sceneConfig = {
-              ...Navigator.SceneConfigs.HorizontalSwipeJump,
-              gestures: {}
-            };
-            return route.sceneConfig;
-          }}
-        />
-      </View>
-    );
-
+  componentWillMount() {
+    StatusBarIOS.setStyle('light-content');
   }
+
+  render() {
+    return <Navigation/>
+  }
+  
 }
 
-const RootedApp = root(ReactNativeWorkshopApp, tree);
-
-AppRegistry.registerComponent('ReactNativeWorkshopApp', () => RootedApp);
+AppRegistry.registerComponent('ReactNativeWorkshopApp', () => ReactNativeWorkshopApp);
